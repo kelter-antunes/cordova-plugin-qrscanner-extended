@@ -22,10 +22,18 @@
       <uses-feature android:name="android.hardware.camera" android:required="false" />
       <uses-feature android:name="android.hardware.camera.front" android:required="false" />
     </config-file>
-
+<!-- 
     <edit-config file="AndroidManifest.xml" target="/manifest/application/activity[@android:name='com.journeyapps.barcodescanner.CaptureActivity']" mode="merge">
       <activity android:screenOrientation="fullSensor"></activity>
     </edit-config>
+
+ -->
+    <edit-config file="AndroidManifest.xml"
+      target="/manifest/application/activity[@android:name='CaptureActivity']"
+      mode="merge">
+      <activity android:screenOrientation="fullSensor"></activity>
+    </edit-config>
+
 
     <source-file src="src/android/QRScanner.java" target-dir="src/com/bitpay/cordova/qrscanner"/>
     <framework src="src/android/qrscanner.gradle" custom="true" type="gradleReference"/>
