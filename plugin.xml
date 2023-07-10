@@ -9,7 +9,12 @@
   </js-module>
 
 
+
   <platform name="android">
+<!-- 
+    <hook type="before_plugin_install" src="hooks/installDependencies.js" />
+    <hook type="after_prepare" src="src/after_prepare.js"/>
+     -->
 
     <config-file target="res/xml/config.xml" parent="/*">
       <feature name="QRScanner">
@@ -22,14 +27,10 @@
       <uses-feature android:name="android.hardware.camera" android:required="false" />
       <uses-feature android:name="android.hardware.camera.front" android:required="false" />
     </config-file>
-<!-- 
-    <edit-config file="AndroidManifest.xml" target="/manifest/application/activity[@android:name='com.journeyapps.barcodescanner.CaptureActivity']" mode="merge">
-      <activity android:screenOrientation="fullSensor"></activity>
-    </edit-config>
 
- -->
+    
     <edit-config file="AndroidManifest.xml"
-      target="/manifest/application/activity[@android:name='CaptureActivity']"
+      target="/manifest/application/activity[@android:name='com.journeyapps.barcodescanner.CaptureActivity']"
       mode="merge">
       <activity android:screenOrientation="fullSensor"></activity>
     </edit-config>
