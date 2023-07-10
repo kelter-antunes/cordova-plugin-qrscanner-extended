@@ -24,11 +24,12 @@
       <uses-feature android:name="android.hardware.camera.front" android:required="false" />
     </config-file>
 
+    <!--
     <edit-config file="app/src/main/AndroidManifest.xml" mode="overwrite" target="/manifest/uses-permission[@android:name='android.permission.CAMERA']">
         <uses-permission android:name="android.permission.CAMERA" />
     </edit-config>
  
-
+-->
 
     <source-file src="src/android/QRScanner.java" target-dir="src/com/bitpay/cordova/qrscanner"/>
     <framework src="src/android/qrscanner.gradle" custom="true" type="gradleReference"/>
