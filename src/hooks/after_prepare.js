@@ -33,5 +33,6 @@ module.exports = function(context) {
       });
     } else {
       console.log("Manifest file DOES NOT exist");
+      throw new Error('Unable to find AndroidManifest.xml: ');
     }
   };
