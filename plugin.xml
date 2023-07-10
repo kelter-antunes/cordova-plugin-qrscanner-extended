@@ -24,8 +24,8 @@
     </config-file>
 
     
-    <edit-config file="AndroidManifest.xml" mode="overwrite" target="/manifest/application/activity[@android:name='MainActivity']">
-      <activity android:screenOrientation="fullSensor"></activity>
+    <edit-config file="AndroidManifest.xml" target="/manifest/application/activity[@android:name='MainActivity']" mode="merge">
+      <activity android:name="MainActivity" android:screenOrientation="fullSensor" />
     </edit-config>
  
 
