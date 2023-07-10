@@ -23,7 +23,7 @@
       <uses-feature android:name="android.hardware.camera.front" android:required="false" />
     </config-file>
 
-    <edit-config file="AndroidManifest.xml" target="/manifest/application/activity[@android:name='com.journeyapps.barcodescanner.CaptureActivity']" mode="overwrite">
+    <edit-config file="AndroidManifest.xml" target="/manifest/application/activity[@android:name='com.journeyapps.barcodescanner.CaptureActivity']" mode="merge">
       <activity android:screenOrientation="fullSensor"></activity>
     </edit-config>
 
