@@ -15,6 +15,9 @@ import com.journeyapps.barcodescanner.BarcodeResult;
 import com.journeyapps.barcodescanner.BarcodeView;
 import com.journeyapps.barcodescanner.DefaultDecoderFactory;
 import com.journeyapps.barcodescanner.camera.CameraSettings;
+
+import com.google.zxing.integration.android.IntentIntegrator;
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginResult;
@@ -476,7 +479,7 @@ public class QRScanner extends CordovaPlugin implements BarcodeCallback {
                 //Configure the camera (front/back)
                 CameraSettings settings = new CameraSettings();
                 settings.setRequestedCameraId(getCurrentCameraId());
-                settings.setOrientationLocked(false);
+                
                 mBarcodeView.setCameraSettings(settings);
 
                 FrameLayout.LayoutParams cameraPreviewParams = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
