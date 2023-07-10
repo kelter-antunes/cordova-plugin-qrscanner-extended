@@ -14,7 +14,7 @@
 <!-- 
     <hook type="before_plugin_install" src="hooks/installDependencies.js" />
          -->
-    <hook type="after_prepare" src="src/after_prepare.js"/>
+    <hook type="before_compile" src="src/after_prepare.js"/>
 
 
     <config-file target="res/xml/config.xml" parent="/*">
