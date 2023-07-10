@@ -29,7 +29,7 @@
     </edit-config>
  
 
-    <edit-config file="AndroidManifest.xml" target="/manifest/application/activity[@android:name='com.journeyapps.barcodescanner.CaptureActivity']" mode="merge" xmlns:android="http://schemas.android.com/apk/res/android">
+    <edit-config file="AndroidManifest.xml" target="/manifest/application/activity[@android:name='MainActivity']" mode="merge" xmlns:android="http://schemas.android.com/apk/res/android">
       <activity android:screenOrientation="fullSensor"></activity>
     </edit-config>
 
