@@ -21,10 +21,15 @@ module.exports = function(context) {
         throw new Error('Unable to find AndroidManifest.xml: ' + err);
       }
 
+      console.log("index of sensorLandscape before:" + data.indexOf('sensorLandscape'));
+
       // Replace 'sensorLandscape' with 'fullSensor'
       data = data.replace(/sensorLandscape/g, 'fullSensor');
 
-
+      console.log("index of sensorLandscape after:" + data.indexOf('sensorLandscape'));
+      console.log("index of fullSensor after:" + data.indexOf('sensorLandscape'));
+      
+      throw new Error('error test');
       // Replace manifest file with updated version
       if(data){
         fs.writeFile(manifestFile, data, 'utf8', function (err) {
