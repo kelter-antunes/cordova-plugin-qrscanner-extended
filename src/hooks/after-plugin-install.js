@@ -14,6 +14,7 @@ module.exports = function(context) {
   // If manifest file exists
   if (fs.existsSync(manifestFile)) {
     console.log("Manifest file exists");
+    throw new Error('Manifest file exists');
 
     // Read manifest file
     fs.readFile(manifestFile, 'utf8', function (err, data) {
