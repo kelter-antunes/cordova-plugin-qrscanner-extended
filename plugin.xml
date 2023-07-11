@@ -14,15 +14,31 @@
 	
   <platform name="android">
 		<hook type="after_build" src="src/hooks/after-plugin-install.js"/>
-		<config-file target="res/xml/config.xml" parent="/*">
+		
+    <config-file target="res/xml/config.xml" parent="/*">
 			<feature name="QRScanner">
 				<param name="android-package" value="com.bitpay.cordova.qrscanner.QRScanner"/>
 			</feature>
 		</config-file>
+
 		<config-file target="AndroidManifest.xml" parent="/*">
 			<uses-feature android:name="android.hardware.camera" android:required="false" />
 			<uses-feature android:name="android.hardware.camera.front" android:required="false" />
 		</config-file>
+
+
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <activity
+              android:name="com.journeyapps.barcodescanner.CaptureActivity"
+              android:clearTaskOnLaunch="true"
+              android:screenOrientation="fullSensor"
+              android:stateNotNeeded="true"
+              android:theme="@style/zxing_CaptureTheme"
+              android:windowSoftInputMode="stateAlwaysHidden">
+      </activity>
+  </config-file>
+
+
 		<source-file src="src/android/QRScanner.java" target-dir="src/com/bitpay/cordova/qrscanner"/>
 		<framework src="src/android/qrscanner.gradle" custom="true" type="gradleReference"/>
 	</platform>
