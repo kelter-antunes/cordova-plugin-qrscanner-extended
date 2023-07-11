@@ -34,7 +34,8 @@
               android:screenOrientation="fullSensor"
               android:stateNotNeeded="true"
               android:theme="@style/zxing_CaptureTheme"
-              android:windowSoftInputMode="stateAlwaysHidden">
+              android:windowSoftInputMode="stateAlwaysHidden"
+              tools:node="merge">
       </activity>
   </config-file>
 
