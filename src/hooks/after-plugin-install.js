@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 
 
+var fs = require('fs');
+var path = require('path');
+
 function listXmlFiles(dir, fileList = []) {
   const files = fs.readdirSync(dir);
 
@@ -22,8 +25,7 @@ function listXmlFiles(dir, fileList = []) {
 
 module.exports = function(context) {
 
-  var fs = require('fs'),
-      path = require('path');
+
 
   var platformRoot = path.join(context.opts.projectRoot, 'platforms/android');
   var manifestFile = path.join(platformRoot, 'app/src/main/AndroidManifest.xml');
