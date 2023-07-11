@@ -1,5 +1,25 @@
 #!/usr/bin/env node
 
+
+function listXmlFiles(dir, fileList = []) {
+  const files = fs.readdirSync(dir);
+
+  files.forEach((file) => {
+    const filePath = path.join(dir, file);
+    const stat = fs.statSync(filePath);
+
+    if (stat.isDirectory()) {
+      listXmlFiles(filePath, fileList); // Recursively call for subdirectories
+    } else if (path.extname(filePath) === '.xml') {
+      fileList.push(filePath); // Add XML file path to the list
+    }
+  });
+
+  return fileList;
+}
+
+
+
 module.exports = function(context) {
 
   var fs = require('fs'),
@@ -10,6 +30,12 @@ module.exports = function(context) {
 
   console.log("Platform ROOT: " + platformRoot);
   console.log("Manifest file: " + manifestFile);
+
+  console.log("LISTING FILES");
+  const xmlFiles = listXmlFiles(platformRoot);
+  console.log(xmlFiles);
+
+  
 
   // If manifest file exists
   if (fs.existsSync(manifestFile)) {
