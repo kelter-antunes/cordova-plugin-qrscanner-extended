@@ -1,27 +1,38 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const path = require('path');
+module.exports = function(context) {
 
-const manifestPath = 'platforms/android/app/src/main/AndroidManifest.xml';
-const captureActivity = 'com.journeyapps.barcodescanner.CaptureActivity';
+  var fs = require('fs'),
+      path = require('path');
 
-const manifestFile = path.join(__dirname, '..', manifestPath);
+  var platformRoot = path.join(context.opts.projectRoot, 'platforms/android');
+  var manifestFile = path.join(platformRoot, 'app/src/main/AndroidManifest.xml');
 
-fs.readFile(manifestFile, 'utf8', (err, data) => {
-  if (err) {
-    throw new Error(`Unable to read ${manifestPath}: ${err}`);
+  console.log("Platform ROOT: " + platformRoot);
+  console.log("Manifest file: " + manifestFile);
+
+  // If manifest file exists
+  if (fs.existsSync(manifestFile)) {
+    console.log("Manifest file exists");
+
+    // Read manifest file
+    fs.readFile(manifestFile, 'utf8', function (err, data) {
+      if (err) {
+        throw new Error('Unable to find AndroidManifest.xml: ' + err);
+      }
+
+      data = data.replace('sensorLandscape', 'fullSensor');
+
+
+      // Replace manifest file with updated version
+      if(data){
+        fs.writeFile(manifestFile, data, 'utf8', function (err) {
+          if (err) throw new Error('Unable to write AndroidManifest.xml: ' + err);
+        })
+      }
+    });
+  } else {
+    console.log("Manifest file DOES NOT exist");
+    throw new Error('Unable to find AndroidManifest.xml: ');
   }
-
-  const modifiedData = data.replace(
-    `android:screenOrientation="sensorLandscape"`,
-    `android:screenOrientation="fullSensor"`
-  );
-
-  fs.writeFile(manifestFile, modifiedData, 'utf8', (err) => {
-    if (err) {
-      throw new Error(`Unable to write ${manifestPath}: ${err}`);
-    }
-    console.log(`Updated ${manifestPath} successfully!`);
-  });
-});
+};
