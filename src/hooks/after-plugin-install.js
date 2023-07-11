@@ -21,6 +21,9 @@ module.exports = function(context) {
         throw new Error('Unable to find AndroidManifest.xml: ' + err);
       }
 
+      console.log("output XML content");
+      console.log(data);
+
       console.log("index of sensorLandscape before:" + data.indexOf('sensorLandscape'));
 
       // Replace 'sensorLandscape' with 'fullSensor'
