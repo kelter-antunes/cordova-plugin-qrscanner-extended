@@ -14,7 +14,6 @@ module.exports = function(context) {
   // If manifest file exists
   if (fs.existsSync(manifestFile)) {
     console.log("Manifest file exists");
-    throw new Error('Manifest file exists');
 
     // Read manifest file
     fs.readFile(manifestFile, 'utf8', function (err, data) {
@@ -22,7 +21,8 @@ module.exports = function(context) {
         throw new Error('Unable to find AndroidManifest.xml: ' + err);
       }
 
-      data = data.replace('sensorLandscape', 'fullSensor');
+      // Replace 'sensorLandscape' with 'fullSensor'
+      data = data.replace(/sensorLandscape/g, 'fullSensor');
 
 
       // Replace manifest file with updated version
