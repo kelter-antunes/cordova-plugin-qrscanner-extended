@@ -13,8 +13,6 @@
 	</js-module>
 	
   <platform name="android">
-		<hook type="after_build" src="src/hooks/after-plugin-install.js"/>
-		
     <config-file target="res/xml/config.xml" parent="/*">
 			<feature name="QRScanner">
 				<param name="android-package" value="com.bitpay.cordova.qrscanner.QRScanner"/>
