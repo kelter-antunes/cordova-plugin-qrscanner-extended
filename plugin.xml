@@ -19,21 +19,11 @@
       <uses-feature android:name="android.hardware.camera" android:required="false" />
       <uses-feature android:name="android.hardware.camera.front" android:required="false" />
     </config-file>
-
-
-
     <edit-config file="app/src/main/AndroidManifest.xml" mode="overwrite" target="/manifest/uses-permission[@android:name='android.permission.CAMERA']">
         <uses-permission android:name="android.permission.CAMERA" />
     </edit-config>
- 
-
-
     <source-file src="src/android/QRScanner.java" target-dir="src/com/bitpay/cordova/qrscanner"/>
     <framework src="src/android/qrscanner.gradle" custom="true" type="gradleReference"/>
-
-
-
-
   </platform>
   <platform name="ios">
     <config-file target="config.xml" parent="/*">
@@ -46,15 +36,5 @@
     <config-file target="*-Info.plist" parent="NSCameraUsageDescription">
       <string>The camera is used to scan QR codes.</string>
     </config-file>
-  </platform>
-  <platform name="browser">
-    <config-file target="config.xml" parent="/*">
-      <feature name="QRScanner">
-        <param name="browser-package" value="QRScanner" />
-      </feature>
-    </config-file>
-    <js-module src="src/browser/plugin.min.js" name="QRScannerProxy">
-      <runs />
-    </js-module>
   </platform>
 </plugin>
